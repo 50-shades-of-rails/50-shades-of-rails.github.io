@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+
+    <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title | escape }}" href="{{ "/feed.xml" | relative_url }}">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+  </head>
+
+  <body>
+    {% include header.html %}
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer class="site-footer h-card">
+      <data class="u-url" href="{{ "/" | relative_url }}"></data>
+
+      <div class="wrapper">
+        <div class="footer-col-wrapper">
+          <div class="footer-col footer-col-1">
+            <ul class="contact-list">
+              <li><span class="icon icon--github hover-icon">{% include icon-github.svg %}</span> <a href="https://github.com/50-shades-of-rails/50-shades-of-rails.github.io">Blog Articles & source code</a></li>
+            </ul>
+          </div>
+
+
+          <div class="footer-col footer-col-2">
+          </div>
+
+          <div class="footer-col footer-col-3">
+            <p>
+              Created in 2018 by <a href="https://www.eq8.eu/" title="Tomas Valent - Equivalent">Equivalent</a>,
+              <a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </p>
+            <p>
+              Subscribe to this blog <a href="{{ "/feed.xml" | relative_url }}">via RSS</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    {% comment %}<script src="{{ "/js/prism.js" | prepend: site.baseurl }}"></script>{% endcomment %}
+
+    {% if jekyll.environment == 'production' %}
+    {% comment %}<script async src="https://www.googletagmanager.com/gtag/js?id=UA-72596708-3"></script>{% endcomment %}
+    {% comment %}{% include google-analytics.html %}{% endcomment %}
+    {% endif %}
+  </body>
+</html>
